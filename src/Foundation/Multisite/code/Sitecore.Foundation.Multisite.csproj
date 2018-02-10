@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -117,24 +118,26 @@
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CreateRenderingSettings.cs" />
-    <Compile Include="Commands\OpenExperienceEditor.cs" />
-    <Compile Include="Dialogs\DatasourceSettingsPage.cs" />
-    <Compile Include="Pipelines\ResolveContentLanguage.cs" />
+    <Compile Include="Contexts\ISiteContext.cs" />
+    <Compile Include="Infrastructure\Commands\CreateRenderingSettings.cs" />
+    <Compile Include="Infrastructure\Commands\OpenExperienceEditor.cs" />
+    <Compile Include="Infrastructure\Dialogs\DatasourceSettingsPage.cs" />
+    <Compile Include="Infrastructure\Pipelines\ResolveContentLanguage.cs" />
+    <Compile Include="Models\SiteDefinition.cs" />
     <Compile Include="Placeholders\SiteSpecificPlaceholderCache.cs" />
     <Compile Include="Placeholders\SiteSpecificPlaceholderCacheManager.cs" />
-    <Compile Include="Providers\DatasourceConfigurationService.cs" />
     <Compile Include="Providers\ISiteSettingsProvider.cs" />
-    <Compile Include="Pipelines\GetDatasourceLocationAndTemplateFromSite.cs" />
+    <Compile Include="Infrastructure\Pipelines\GetDatasourceLocationAndTemplateFromSite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\IDatasourceProvider.cs" />
     <Compile Include="Providers\ISiteDefinitionsProvider.cs" />
     <Compile Include="Providers\DatasourceProvider.cs" />
     <Compile Include="Providers\SiteDefinitionsProvider.cs" />
     <Compile Include="Providers\SiteSettingsProvider.cs" />
-    <Compile Include="ServicesConfigurator.cs" />
-    <Compile Include="SiteContext.cs" />
-    <Compile Include="SiteDefinition.cs" />
+    <Compile Include="Infrastructure\ServicesConfigurator.cs" />
+    <Compile Include="Contexts\SiteContext.cs" />
+    <Compile Include="Services\DatasourceConfigurationService.cs" />
+    <Compile Include="Services\IDatasourceConfigurationService.cs" />
     <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>

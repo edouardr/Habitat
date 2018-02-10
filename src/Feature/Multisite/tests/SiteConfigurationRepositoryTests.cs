@@ -11,7 +11,7 @@
     using Sitecore.FakeDb;
     using Sitecore.Feature.Multisite.Models;
     using Sitecore.Feature.Multisite.Repositories;
-    using Sitecore.Foundation.Multisite;
+    using Sitecore.Foundation.Multisite.Models;
     using Sitecore.Foundation.Multisite.Providers;
     using Sitecore.Foundation.Testing.Attributes;
     using Sitecore.Web;

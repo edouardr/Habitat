@@ -3,8 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using Sitecore.Data.Fields;
+    using Sitecore.DependencyInjection;
     using Sitecore.Feature.Language.Models;
-    using Sitecore.Foundation.Multisite;
+    using Sitecore.Foundation.Multisite.Contexts;
     using Sitecore.Foundation.SitecoreExtensions.Extensions;
 
     public static class LanguageRepository
@@ -23,8 +24,9 @@
         public static IEnumerable<Language> GetSupportedLanguages()
         {
             var languages = GetAll();
-            var siteContext = new SiteContext();
-            var siteDefinition = siteContext.GetSiteDefinition(Context.Item);
+            // TODO Service Locator Anti-pattern - use DI to remove hard dependency to SiteContext
+            var siteContext = ServiceLocator.ServiceProvider.GetService(typeof(ISiteContext)) as ISiteContext;
+            var siteDefinition = siteContext?.GetSiteDefinition(Context.Item);
 
             if (siteDefinition?.Item == null || !siteDefinition.Item.IsDerived(Feature.Language.Templates.LanguageSettings.ID))
             {
