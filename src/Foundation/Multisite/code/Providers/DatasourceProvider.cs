@@ -16,7 +16,7 @@
 
         public Item[] GetDatasourceLocations(Item contextItem, string datasourceName)
         {
-            var sourceSettingItem = this.siteSettingsProvider.GetSetting(contextItem, DatasourceSettingsName, datasourceName);
+            var sourceSettingItem = this.siteSettingsProvider.GetSetting(contextItem, Templates.RenderingSiteSettings.ID, DatasourceSettingsName, datasourceName);
             var datasourceRoot = sourceSettingItem?[Templates.DatasourceConfiguration.Fields.DatasourceLocation];
 
             if (string.IsNullOrEmpty(datasourceRoot))
@@ -26,13 +26,14 @@
             {
                 return this.GetRootsFromQuery(contextItem, datasourceRoot.Substring(QueryPrefix.Length));
             }
+
             if (datasourceRoot.StartsWith("./", StringComparison.InvariantCulture))
             {
                 return this.GetRelativeRoots(contextItem, datasourceRoot);
             }
 
             var sourceRootItem = contextItem.Database.GetItem(datasourceRoot);
-            return sourceRootItem != null ? new[] { sourceRootItem } : new Item[] { };
+            return sourceRootItem != null ? new[] {sourceRootItem} : new Item[] { };
         }
 
         private Item[] GetRelativeRoots(Item contextItem, string relativePath)
@@ -53,7 +54,7 @@
 
         public Item GetDatasourceTemplate(Item contextItem, string settingName)
         {
-            var settingItem = this.siteSettingsProvider.GetSetting(contextItem, DatasourceSettingsName, settingName);
+            var settingItem = this.siteSettingsProvider.GetSetting(contextItem, Templates.RenderingSiteSettings.ID, DatasourceSettingsName, settingName);
             var templateId = settingItem?[Templates.DatasourceConfiguration.Fields.DatasourceTemplate];
 
             return string.IsNullOrEmpty(templateId) ? null : contextItem.Database.GetItem(templateId);

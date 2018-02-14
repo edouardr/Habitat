@@ -19,10 +19,13 @@
             serviceCollection.Replace(ServiceDescriptor
               .Singleton<BasePlaceholderCacheManager, SiteSpecificPlaceholderCacheManager>());
 
-            serviceCollection.AddSingleton<IDatasourceProvider, DatasourceProvider>();
             serviceCollection.AddSingleton<ISiteSettingsProvider, SiteSettingsProvider>();
             serviceCollection.AddSingleton<ISiteDefinitionsProvider, SiteDefinitionsProvider>();
+            serviceCollection.AddSingleton<IDatasourceProvider, DatasourceProvider>();
+            serviceCollection.AddSingleton<IFieldSourceProvider, FieldSourceProvider>();
+
             serviceCollection.AddSingleton<IDatasourceConfigurationService, DatasourceConfigurationService>();
+            serviceCollection.AddSingleton<IFieldSourceConfigurationService, FieldSourceConfigurationService>();
 
             serviceCollection.AddTransient<ISiteContext, Contexts.SiteContext>();
             serviceCollection.AddTransient<ISiteDefinitionsProvider, SiteDefinitionsProvider>();

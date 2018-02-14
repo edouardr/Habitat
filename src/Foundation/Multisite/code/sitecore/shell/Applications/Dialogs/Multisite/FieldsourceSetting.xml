@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<control xmlns:def="Definition" xmlns="http://schemas.sitecore.net/Visual-Studio-Intellisense">
+  <FieldsourceSettings>
+    <FormDialog Icon="Network/32x32/link.png" Header="Create Field source Settings" Text="Select field you want to create field source settings for." OKButton="OK">
+      <CodeBeside Type="Sitecore.Foundation.Multisite.Infrastructure.Dialogs.FieldsourceSettingsPage, Sitecore.Foundation.Multisite" />
+      <DataContext ID="DataContext" Root="/" />
+      <Border ID="Items" Height="100%">
+        <TreeviewEx ID="Treeview" DataContext="DataContext" ShowRoot="false" DblClick="OK_Click" ContextMenu='Treeview.GetContextMenu("contextmenu")' />
+      </Border>
+    </FormDialog>
+  </FieldsourceSettings>
+</control>

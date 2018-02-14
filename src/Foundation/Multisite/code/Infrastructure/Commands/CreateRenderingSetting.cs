@@ -9,19 +9,17 @@
     using Sitecore.Text;
     using Sitecore.Web.UI.Sheer;
 
-    public class CreateRenderingSettings : Command
+    public class CreateRenderingSetting : Command
     {
-        private const string DatasourceLocationFieldName = "Datasource Location";
-
         private readonly IDatasourceConfigurationService datasourceConfigurationService;
 
-        // TODO Service Locator Anti-pattern - Find a proper way to inject dependencies for a commad (usage of resolve="true" doesn't work)
-        public CreateRenderingSettings() : this(ServiceLocator.ServiceProvider
+        // TODO Service Locator Anti-pattern - Find a proper way to inject dependencies for a command (usage of resolve="true" doesn't work)
+        public CreateRenderingSetting() : this(ServiceLocator.ServiceProvider
             .GetService(typeof(IDatasourceConfigurationService)) as IDatasourceConfigurationService)
         {
         }
 
-        public CreateRenderingSettings(IDatasourceConfigurationService datasourceConfigurationService)
+        public CreateRenderingSetting(IDatasourceConfigurationService datasourceConfigurationService)
         {
             this.datasourceConfigurationService = datasourceConfigurationService;
         }
@@ -80,7 +78,7 @@
 
         private string GetDatasourceConfigurationName(Item renderingItem)
         {
-            var datasourceLocationValue = renderingItem[DatasourceLocationFieldName];
+            var datasourceLocationValue = renderingItem[Templates.DatasourceConfiguration.Fields.DatasourceLocationName];
             var datasourceConfigurationName = this.datasourceConfigurationService.GetSiteDatasourceConfigurationName(datasourceLocationValue);
             if (string.IsNullOrEmpty(datasourceConfigurationName))
             {

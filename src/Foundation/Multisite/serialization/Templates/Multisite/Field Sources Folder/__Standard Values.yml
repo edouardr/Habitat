@@ -1,16 +1,14 @@
 ﻿---
-ID: "af244e6f-ef24-4e60-8c85-ff18a9d8a54f"
-Parent: "4c82b6dd-fe7c-4144-bcb3-f21b4080568f"
-Template: "4c82b6dd-fe7c-4144-bcb3-f21b4080568f"
-Path: /sitecore/templates/Foundation/Multisite/Site Settings Root/__Standard Values
+ID: "254d8946-83c9-4331-af22-50b5da5faf0f"
+Parent: "14f7445a-d83c-4d43-95fb-c58f02e6d000"
+Template: "14f7445a-d83c-4d43-95fb-c58f02e6d000"
+Path: /sitecore/templates/Foundation/Multisite/Field Sources Folder/__Standard Values
 DB: master
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
   Type: TreelistEx
-  Value: |
-    {7A98BE60-9F59-4064-82C2-58DA63562FA5}
-    {14F7445A-D83C-4D43-95FB-C58F02E6D000}
+  Value: "{BAA59664-7EA4-4F78-8C9F-448F95E72096}"
 Languages:
 - Language: en
   Versions:
@@ -18,7 +16,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20160105T043436Z
+      Value: 20180210T114533Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

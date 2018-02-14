@@ -1,0 +1,30 @@
+﻿---
+ID: "baa59664-7ea4-4f78-8c9f-448f95e72096"
+Parent: "ddf31f45-d997-46b1-accb-05c980792c75"
+Template: "b2613cc1-a748-46a3-a0db-3774574bd339"
+Path: /sitecore/templates/Branches/Foundation/Multisite/FieldSettings
+DB: master
+BranchID: "f6b0e6f1-2451-4c72-94fd-22d7b93b592a"
+SharedFields:
+- ID: "854cc8f6-94ad-4521-a4b6-44ed8f794c98"
+  Hint: Command
+  Value: "multisite:createfieldsourcesetting(parentID=$ParentID)"
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{3E3F4A4D-CE26-42FC-9AC0-F1011CB198ED}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Field source Configuration
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180213T133104Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

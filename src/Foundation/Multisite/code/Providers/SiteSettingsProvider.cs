@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using Sitecore.Configuration;
+    using Sitecore.Data;
     using Sitecore.Data.Items;
     using Sitecore.Foundation.Multisite.Contexts;
     using Sitecore.Foundation.SitecoreExtensions.Extensions;
@@ -15,16 +16,16 @@
             this.siteContext = siteContext;
         }
 
-        public static string SettingsRootName => Settings.GetSetting("Multisite.SettingsRootName", "settings");
+        public static string SettingsRootName => Settings.GetSetting("Foundation.Multisite.SettingsRootName", "settings");
 
-        public virtual Item GetSetting(Item contextItem, string settingsName, string setting)
+        public virtual Item GetSetting(Item contextItem, ID settingFolderTemplateId, string settingsName, string setting)
         {
-            var settingsRootItem = this.GetSettingsRoot(contextItem, settingsName);
+            var settingsRootItem = this.GetSettingsRoot(contextItem, settingFolderTemplateId, settingsName);
             var settingItem = settingsRootItem?.Children.FirstOrDefault(i => i.Key.Equals(setting.ToLower()));
             return settingItem;
         }
 
-        private Item GetSettingsRoot(Item contextItem, string settingsName)
+        private Item GetSettingsRoot(Item contextItem, ID settingFolderTemplateId, string settingsName)
         {
             var currentDefinition = this.siteContext.GetSiteDefinition(contextItem);
             if (currentDefinition?.Item == null)
@@ -34,7 +35,9 @@
 
             var definitionItem = currentDefinition.Item;
             var settingsFolder = definitionItem.Children[SettingsRootName];
-            var settingsRootItem = settingsFolder?.Children.FirstOrDefault(i => i.IsDerived(Templates.SiteSettings.ID) && i.Key.Equals(settingsName.ToLower()));
+            var settingsRootItem = settingsFolder?.Children
+                .FirstOrDefault(i => i.IsDerived(settingFolderTemplateId) && 
+                                     i.Key.Equals(settingsName.ToLower()));
             return settingsRootItem;
         }
     }

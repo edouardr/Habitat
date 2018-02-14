@@ -1,4 +1,4 @@
-﻿namespace Sitecore.Foundation.Multisite.Tests
+﻿namespace Sitecore.Foundation.Multisite.Tests.Providers
 {
     using FluentAssertions;
     using NSubstitute;
@@ -26,7 +26,7 @@
              {
                new DbItem(SiteSettingsProvider.SettingsRootName)
                {
-                 new DbItem(DatasourceProvider.DatasourceSettingsName, ID.NewID, Templates.SiteSettings.ID)
+                 new DbItem(DatasourceProvider.DatasourceSettingsName, ID.NewID, Templates.RenderingSiteSettings.ID)
                  {
                    new DbItem(settingName, settingItemId)
                  }
@@ -35,7 +35,7 @@
             var definitionItem = db.GetItem(definitionId);
             var setting = db.GetItem(settingItemId);
             context.GetSiteDefinition(Arg.Any<Item>()).Returns(new SiteDefinition { Item = definitionItem });
-            var settingItem = provider.GetSetting(contextItem, DatasourceProvider.DatasourceSettingsName, settingName);
+            var settingItem = provider.GetSetting(contextItem, Templates.RenderingSiteSettings.ID, DatasourceProvider.DatasourceSettingsName, settingName);
             settingItem.ID.ShouldBeEquivalentTo(setting.ID);
         }
 
@@ -45,7 +45,7 @@
         {
             var provider = new SiteSettingsProvider(context);
             context.GetSiteDefinition(Arg.Any<Item>()).Returns((SiteDefinition)null);
-            var settingItem = provider.GetSetting(contextItem, DatasourceProvider.DatasourceSettingsName, settingName);
+            var settingItem = provider.GetSetting(contextItem, Templates.RenderingSiteSettings.ID, DatasourceProvider.DatasourceSettingsName, settingName);
             settingItem.Should().BeNull();
         }
     }

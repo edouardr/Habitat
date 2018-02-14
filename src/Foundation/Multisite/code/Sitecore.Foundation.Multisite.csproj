@@ -113,19 +113,25 @@
     <Content Include="App_Config\Include\Foundation\Foundation.Multisite.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="sitecore\shell\Applications\Dialogs\Multisite\FieldsourceSetting.xml" />
     <Content Include="sitecore\shell\Applications\Dialogs\Multisite\DatasourceSettings.xml" />
     <Content Include="packages.config" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\ISiteContext.cs" />
-    <Compile Include="Infrastructure\Commands\CreateRenderingSettings.cs" />
+    <Compile Include="Infrastructure\Commands\CreateFieldSourceSetting.cs" />
+    <Compile Include="Infrastructure\Commands\CreateRenderingSetting.cs" />
     <Compile Include="Infrastructure\Commands\OpenExperienceEditor.cs" />
+    <Compile Include="Infrastructure\Dialogs\FieldsourceSettingsPage.cs" />
     <Compile Include="Infrastructure\Dialogs\DatasourceSettingsPage.cs" />
+    <Compile Include="Infrastructure\Pipelines\GetFieldSource.cs" />
     <Compile Include="Infrastructure\Pipelines\ResolveContentLanguage.cs" />
     <Compile Include="Models\SiteDefinition.cs" />
     <Compile Include="Placeholders\SiteSpecificPlaceholderCache.cs" />
     <Compile Include="Placeholders\SiteSpecificPlaceholderCacheManager.cs" />
+    <Compile Include="Providers\FieldSourceProvider.cs" />
+    <Compile Include="Providers\IFieldSourceProvider.cs" />
     <Compile Include="Providers\ISiteSettingsProvider.cs" />
     <Compile Include="Infrastructure\Pipelines\GetDatasourceLocationAndTemplateFromSite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,7 +143,9 @@
     <Compile Include="Infrastructure\ServicesConfigurator.cs" />
     <Compile Include="Contexts\SiteContext.cs" />
     <Compile Include="Services\DatasourceConfigurationService.cs" />
+    <Compile Include="Services\FieldSourceConfigurationService.cs" />
     <Compile Include="Services\IDatasourceConfigurationService.cs" />
+    <Compile Include="Services\IFieldSourceConfigurationService.cs" />
     <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
